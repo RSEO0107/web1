@@ -6,7 +6,7 @@
     <style>
         body { margin: 0; font-family: sans-serif; background: #f4f4f4; }
         .container { display: flex; height: 100vh; }
-        .sidebar { width: 280px; background: #fff; padding: 20px; border-right: 1px solid #ccc; overflow-y: auto; }
+        .sidebar { width: 340px; background: #fff; padding: 20px; border-right: 1px solid #ccc; overflow-y: auto; }
         .sidebar h2 { margin-top: 0; font-size: 18px; text-align: center; }
         .sidebar ul { list-style: none; padding: 0; }
         .sidebar li { padding: 8px; cursor: pointer; border-radius: 4px; }
@@ -18,7 +18,7 @@
         .map-box img { width: 100%; max-height: none; object-fit: contain; border-radius: 8px; }
         .drop-table { display: flex; flex-direction: column; gap: 15px; margin-top: 15px; }
         .monster-entry { display: flex; background: white; border-radius: 8px; padding: 10px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
-        .monster-left { width: 160px; text-align: center; }
+        .monster-left { width: 160px; flex-shrink:0; text-align: center; }
         .monster-left img.monster-image { width: 150px; height: 150px; object-fit: contain; }
         .monster-icon { width: 17px; height: 17px; margin-top: 6px; }
         .required { font-weight: bold; margin-top: 4px; }
@@ -36,6 +36,12 @@
         .drop-note { font-size: 12px; color: #d00; margin-top: 6px; }
         .map-box { display: flex; justify-content: center; align-items: center; }
         .map-box img { width: auto; height: auto; max-width: none; max-height: none; display: block; }
+		.monster-mid{width:190px; display:flex; align-items:stretch; justify-content:center; padding-top:6px; box-sizing:border-box; margin-left:8px;}
+        .monster-stats{width:100%;background:#f7f7f7;border:1px solid #e6e6e6;border-radius:8px;padding:10px;box-sizing:border-box;font-size:13px;line-height:1.6;display:flex;flex-direction:column;justify-content:center;align-items:center;}
+		.monster-stats .stat-row{display:flex;gap:6px;align-items:center;justify-content:center;white-space:nowrap;margin:4px 0;}
+        .monster-stats .stat-row:last-child{margin-bottom:0;}
+        .monster-stats .stat-label{color:#555;font-weight:700;}
+        .monster-stats .stat-value{font-weight:800;}
     </style>
 </head>
 <body>
@@ -1435,80 +1441,327 @@ beastforest: {
                 name: '엘프킹',  
                 image: 'https://lh7-rt.googleusercontent.com/sheetsz/AHOq17HqVgddYKzbf151pnpRVyQrntaqqmx1pDRLVQIARM-6ClPsgxAI64YcsqEK6gFJ5GuJHp37SkyiGC4TzBYz7CYigc2fOJiD5JA2LhLxwrTOVoMyudiiqf1vMI4w274?key=KZQvec3QiV5HVQXkxOqGDu0h', 
                 icon: 'human',  
-                evasion: '3,061',  
-                drops: '한손검, 활, 손톱무기, 공용갑옷, 반지, 팔문신'  
-            },
-            {
-                name: '어쌔신',  
-                image: 'https://lh7-rt.googleusercontent.com/sheetsz/AHOq17HICaUdfkbwr3O5JWu2H2bHtZD2b5o6XbCMkTfdq8DgVDbJzOSKnaaDDmwlRUgVmo_3bjebMdsHueBM556C-8PduP4XhhAl_IKrh5K9orCbTXbDUgjzYs_-4ZokjrHN?key=KZQvec3QiV5HVQXkxOqGDu0h', 
-                icon: 'human',  
-                evasion: '4,137',  
-                drops: '한손검, 활, 손톱무기, 공용갑옷, 화살, 반지, 팔문신'  
-            },
-            {
-                name: '좀도둑',  
-                image: 'https://lh7-rt.googleusercontent.com/sheetsz/AHOq17G4PGMiwlDW4HlbrMjEt-P9_lAXK8mgm05P-CvyrYUl-Z6E3SzRdbXWpaOx2fzUAlS5Zi5y4xFTS3jGnmYCNrPMqutsl-gkQj0XGdXY_RgxMb6MHmo4r7i8DombtMFF?key=KZQvec3QiV5HVQXkxOqGDu0h', 
-                icon: 'human',  
-                evasion: '2,176',  
-                drops: '단검, 마술봉, 전용갑옷, 탄환, 반지'  
-            },
-            {
-                name: '이프리트',  
-                image: 'https://lh7-rt.googleusercontent.com/sheetsz/AHOq17HGGdXPosb9jk5U4a4BBY-AWcIV0mQZBH71o_FW2-4R0JYh9HcjxNfnJeN5XcjymA7XNkc6erqxQEli-CF_xlF-w3ZtNMhdQLcD4ol8voVUHBqIumrqy1y6N8RvZhKm?key=KZQvec3QiV5HVQXkxOqGDu0h', 
-                icon: 'divine',  
-                evasion: '8,081',  
-                drops: '활, 마술봉, 관, 신발, 화살, 탄환'  
-            },
-            {
-                name: '전갈',  
-                image: 'https://lh7-rt.googleusercontent.com/sheetsz/AHOq17GY21ZP2UZi3lfoGLosPadKnfkpGqi5uADohG-1VIDEUAGaewZ_T_adEJk4vU7S_GLRwKPgpH6p1h43aDa-LopoZhZ5FKn_PgkASap_ONj6ivNoRIWLOOTlPrLhAnc?key=KZQvec3QiV5HVQXkxOqGDu0h', 
-                icon: 'animal',  
-                evasion: '7,100',  
-                drops: '창, 활, 투구, 귀걸이'  
-            },
-            {
-                name: '거머리',  
-                image: 'https://lh7-rt.googleusercontent.com/sheetsz/AHOq17F9LE8Eiuad-M88HdNCwwzvwAqTLvuOgXKhv77Zqqyub0aslBzcphnSZD7ICkXzB1EYAEdYqKLsWzvg4CRKLDcpmGX_gtlrl0c_362cNI8h6nrQcTTzT9SvuhSO-7I?key=KZQvec3QiV5HVQXkxOqGDu0h', 
-                icon: 'animal',  
-                evasion: '4,738',  
-                drops: '한손검, 메이스, 손톱무기, 관, 망토'  
+                evasion: '3,088',
+				critResist: '0%',
+				hp: '21,122,883',
+                drops: '공용 갑옷, 벨트, 화살, 어깨 문신, 팔 문신, 반지'  
             },
             {
                 name: '블랙엘프',  
                 image: 'https://lh7-rt.googleusercontent.com/sheetsz/AHOq17EBwD0VY8dfQ9-3M7qEDqndUStrHq-_LjRpOpzr1XLRQiQnPO1YvmdfCGRfmvM8Ec3EN88xEETxnQKDqeLuOly1SwHM6mvD2WoIqJ2w4Wl0deo2N78zpRp45rvblhxe?key=KZQvec3QiV5HVQXkxOqGDu0h', 
                 icon: 'human',  
-                evasion: '3,509',  
-                drops: '한손검, 활, 손톱무기, 장갑, 팔찌, 팔문신'  
-            },
-            {
-                name: '사티로스',  
-                image: 'https://lh7-rt.googleusercontent.com/sheetsz/AHOq17EDT6Q2Inco7Do8g6dKc73y7AOvh90pknKym-bSXnXUlwgT-eTESz6hkfYJmVrPbrFii7nJcZARVOlZwIOjOkHWHVzU3uA_4YIo2W5nkBGAbFB1_vV7HFoyz8ZtyZVT?key=KZQvec3QiV5HVQXkxOqGDu0h', 
-                icon: 'divine',  
-                evasion: '2,372',  
-                drops: '창, 피리, 전용갑옷, 장갑대용'  
-            },
-            {
-                name: '닭투사',  
-                image: 'https://lh7-rt.googleusercontent.com/sheetsz/AHOq17FbmfgZu7Jre6VOladnSB3YahcXMA5TzLi1jSKcb2kgBqW4i9IOcwfyCN7okt5u9D3vaNvh4mAFBOX41i3WeE_LS-zrhdcQbNU8gkExHxBY6o0EnpBDAH-TjM7kz3is?key=KZQvec3QiV5HVQXkxOqGDu0h', 
-                icon: 'devil',  
-                evasion: '3,643',  
-                drops: '한손검, 활, 손톱무기, 장갑, 팔찌, 팔문신'  
-            },
-            {
-                name: '해골기사',  
-                image: 'https://lh7-rt.googleusercontent.com/sheetsz/AHOq17FhhQXBpaGxV0_m_TASul7-oouscRdHZzJ5tZdTAEIDV2RZ2bvhd7txlW_B8vXyvwt4gxLN_ExegBtiDFXrHg-T6G49QASsWX9y0xXO8cjqxiDcUF5u4jST5FzNYP8?key=KZQvec3QiV5HVQXkxOqGDu0h', 
-                icon: 'undead',  
-                evasion: '2,880',  
-                drops: '메이스, 발톱, 슬링, 전용갑옷'  
+                evasion: '3,543',
+		        critResist: '0%',
+				hp: '8,210,455',
+                drops: '손톱무기, 장갑, 전용 갑옷, 화살, 슬링 탄환, 팔문신'  
             },
             {
                 name: '전도사',  
                 image: 'https://lh7-rt.googleusercontent.com/sheetsz/AHOq17EbHskw8oXdvN0AQ9vQkRTKgKVPX4LPy9760jLSfGwneA0SnnAKTL8BZx67VnRkDhwRLFs3zDDjyF5rlpCU_hdz0NiZrq-R2ljMguZ4ixjQn7Jzhi86Ij4SX3EMhRzH?key=KZQvec3QiV5HVQXkxOqGDu0h', 
                 icon: 'human',  
-                evasion: '4,584',  
-                drops: '메이스, 날개, 관, 전용갑옷, 십자가'  
+                evasion: '4,632',
+		        critResist: '0%',
+				hp: '8,654,165',
+                drops: '낫, 책, 목걸이, 관, 전용 갑옷, 신발'  
             },
-
+        ]
+    },
+	templeofthegods1f: { 
+        name: 'Lv.2025 [신의 신전 1F]',
+        map: 'https://lh7-rt.googleusercontent.com/sheetsz/AHOq17GSHLESfSSUxrIWl31KyO6tfgUiVDNhkfesUE3S2IHR7REcYJqB9fPB0xhOFH0PgN1xi5NfQI50gxiRy-o0n1HKGvMFoac1MagHFWyDGK-dayfTGQfm_GLmgr3hV-E0nrBckn_c4a050UOR3Ic?key=KZQvec3QiV5HVQXkxOqGDu0h',  
+        route: '고도 (13,190) 포탈',
+        monsters: [  
+            {
+                name: '아스트랄 쉘',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'human',  
+                evasion: '16,518',
+		        critResist: '100%',
+				hp: '19,477,255',
+				petRequirement: '물펫 필요',
+                drops: '날개, 책, 관, 전용 갑옷, 방패, 반지'  
+            },
+			            {
+                name: '아스트랄 캔서',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'human',  
+                evasion: '18,382',
+		        critResist: '100%',
+				hp: '20,293,600',
+				petRequirement: '바람펫 필요',
+                drops: '목걸이, 벨트, 슬링 탄환, 어깨 문신, 팔 문신, 반지'  
+            },
+        ]
+    },
+	templeofthegods2f: { 
+        name: 'Lv.2150 [신의 신전 2F]',
+        map: 'https://lh7-rt.googleusercontent.com/sheetsz/AHOq17H5h8nI7D3IODkDKOU6i25CvvctCyJHOhRC1tEdnEZRHjFpBZDjcdTEyOUGfEcKdOJvqQe453v30rYPlcG-woqVR8mwb8lI_Ccggi5emDvzeSJNmgMDZhljL7Bm3YBAAKDRMKkXphE7Nxf7rhY?key=KZQvec3QiV5HVQXkxOqGDu0h',  
+        route: '고도 (13,190) 포탈',
+        monsters: [  
+            {
+                name: '아스트랄 젤리',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'animal',  
+                evasion: '1,589',
+		        critResist: '100%',
+				hp: '20,565,600',
+				petRequirement: '빛펫 필요',
+                drops: '슬링, 채찍, 벨트, 팔찌, 슬링 탄환, 반지'  
+            },
+            {
+                name: '아스트랄 스퀴드',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'divine',  
+                evasion: '1,552',
+		        critResist: '100%',
+				hp: '20,289,643',
+				petRequirement: '빛펫 필요',
+                drops: '활, 투구, 벨트, 팔찌,화살, 방패, '  
+            },
+			{
+                name: '아스트랄 프로그',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'animal',  
+                evasion: '1,552',
+		        critResist: '100%',
+				hp: '20,452,152',
+				petRequirement: '',
+                drops: '창, 지팡이, 귀걸이, 장갑, 신발, 반지'  
+            },
+			{
+                name: '아스트랄 포세이돈',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'divine',  
+                evasion: '1,552',
+		        critResist: '100%',
+				hp: '20,760,784',
+				petRequirement: '',
+                drops: '한손검, 메이스, 이빨, 낫, 책, 공용 갑옷'  
+            },
+			{
+                name: '디바인 텐타클',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'divine',  
+                evasion: '1,736',
+		        critResist: '100%',
+				hp: '20,107,149',
+				petRequirement: '',
+                drops: '귀걸이, 망토, 벨트, 장갑, 공용 갑옷, 반지'  
+            },
+			{
+                name: '신전의 사도',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'divine',  
+                evasion: '1,552',
+		        critResist: '100%',
+				hp: '20,396,640',
+				petRequirement: '빛펫 필요',
+                drops: '날개, 단검, 마술봉, 목걸이, 망토, 투구'  
+            },
+			{
+                name: '타천의 사도',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'divine',  
+                evasion: '1,552',
+		        critResist: '200%',
+				hp: '20,235,600',
+				petRequirement: '',
+                drops: '양손검, 관, 장갑, 발톱, 팔찌, 전용 갑옷'  
+            },
+        ]
+    },
+	rebornancientcitybrunnenshtig: { 
+        name: 'Lv.2250 [다시 태어난 고도 브룬넨슈티그]',
+        map: 'https://lh7-rt.googleusercontent.com/sheetsz/AHOq17ErWw4hybItD14I3jTrkwjiz3byzly73-d9sJ5GTjyBLz2ZnkzAs9Bn5W3fVlA7iwEArkVa29GFQFXcLNkSX7gm5o-GlOjhQiBatlHRsyZf3hFWC3dqCAa6TeXBFhLpHiX4WQ0Y4_hFltKX-g4?key=KZQvec3QiV5HVQXkxOqGDu0h',  
+        route: '고도 (6,138) 포탈',
+        monsters: [  
+            {
+                name: '로열 엘프',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'human',  
+                evasion: '1,431',
+		        critResist: '120%',
+				hp: '20,044,336',
+				petRequirement: '',
+                drops: '한손검, 창, 손톱무기, 투구, 방패, 어깨 문신'  
+            },
+			{
+                name: '배틀 마스터',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'human',  
+                evasion: '1,431',
+		        critResist: '120%',
+				hp: '20,044,336',
+				petRequirement: '',
+                drops: '양손검, 피리, 손톱무기, 발톱, 신발, 팔 문신'  
+            },
+			{
+                name: '시공의 지배자',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'human',  
+                evasion: '1,431',
+		        critResist: '120%',
+				hp: '20,044,336',
+				petRequirement: '',
+                drops: '날개, 낫, 귀걸이, 벨트, 팔찌, 공용 갑옷'  
+            },
+			{
+                name: '특급 추적자',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'human',  
+                evasion: '1,431',
+		        critResist: '120%',
+				hp: '20,044,336',
+				petRequirement: '',
+                drops: '메이스, 단검, 마술봉, 낫, 망토, 화살'  
+            },
+			{
+                name: '나이트메어 로드',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'human',  
+                evasion: '1,330',
+		        critResist: '120%',
+				hp: '20,044,336',
+				petRequirement: '불펫 필요',
+                drops: '지팡이, 슬링, 마술봉, 책, 목걸이, 관'  
+            },
+			{
+                name: '잭 더 리퍼',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'devil',  
+                evasion: '1,431',
+		        critResist: '120%',
+				hp: '20,044,336',
+				petRequirement: '빛펫 필요',
+                drops: '활, 이빨, 피리, 장갑, 전용 갑옷, 반지'  
+            },
+			{
+                name: '엘더 리치',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'undead',  
+                evasion: '1,460',
+		        critResist: '120%',
+				hp: '20,044,336',
+				petRequirement: '불펫 필요',
+                drops: '지팡이, 단검, 책, 관, 장갑, 반지'  
+            },
+			{
+                name: '데스 프린스',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'undead',  
+                evasion: '1,431',
+		        critResist: '120%',
+				hp: '20,044,336',
+				petRequirement: '',
+                drops: '메이스, 마술봉, 발톱, 투구, 공용 갑옷, 화살'  
+            },
+        ]
+    },
+	otherworldlyancientcitybrunnenshtig: { 
+        name: 'Lv.2350 [이계에 존재하는 고도 브룬넨슈티그]',
+        map: 'https://lh7-rt.googleusercontent.com/sheetsz/AHOq17ErWw4hybItD14I3jTrkwjiz3byzly73-d9sJ5GTjyBLz2ZnkzAs9Bn5W3fVlA7iwEArkVa29GFQFXcLNkSX7gm5o-GlOjhQiBatlHRsyZf3hFWC3dqCAa6TeXBFhLpHiX4WQ0Y4_hFltKX-g4?key=KZQvec3QiV5HVQXkxOqGDu0h',  
+        route: '현재는 못감',
+        monsters: [  
+            {
+                name: '완전체 리빙 아머',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'undead',  
+                evasion: '1,540',
+		        critResist: '130%',
+				hp: '20,344,955',
+				petRequirement: '',
+                drops: '한손검, 활, 책, 팔찌, 공용 갑옷, 방패'  
+            },
+			{
+                name: '전설의 사냥꾼',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'human',  
+                evasion: '1,540',
+		        critResist: '130%',
+				hp: '20,251,152',
+				petRequirement: '',
+                drops: '한손검, 활, 손톱무기, 장갑, 팔찌, 팔 문신'  
+            },
+			{
+                name: '살아남은 들개',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'animal',  
+                evasion: '1,540',
+		        critResist: '130%',
+				hp: '20,145,602',
+				petRequirement: '',
+                drops: '메이스, 이빨, 피리, 전용 갑옷, 신발, 반지'  
+            },
+			{
+                name: '고스트 로드',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'undead',  
+                evasion: '1,450',
+		        critResist: '130%',
+				hp: '20,344,955',
+				petRequirement: '',
+                drops: '창, 날개, 피리, 귀걸이, 망토, 브로치'  
+            },
+			{
+                name: '불의 지배자',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'divine',  
+                evasion: '1,360',
+		        critResist: '130%',
+				hp: '20,643,985',
+				petRequirement: '불펫 필요',
+                drops: '활, 슬링, 마술봉, 발톱, 슬링 탄환, 반지'  
+            },
+			{
+                name: '부활한 엔팅',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'divine',  
+                evasion: '3,716',
+		        critResist: '130%',
+				hp: '20,643,985',
+				petRequirement: '',
+                drops: '메이스, 지팡이, 책, 귀걸이, 벨트, 반지'  
+            },
+			{
+                name: '완치된 고블린',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'devil',  
+                evasion: '1,540',
+		        critResist: '130%',
+				hp: '20,145,602',
+				petRequirement: '',
+                drops: '이빨, 슬링, 발톱, 슬링 탄환, 어깨 문신'  
+            },
+			{
+                name: '적안의 마도경',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'human',  
+                evasion: '1,450',
+		        critResist: '130%',
+				hp: '20,145,602',
+				petRequirement: '불펫 필요',
+                drops: '피리, 마술봉, 관, 벨트, 화살, 팔 문신'  
+            },
+			{
+                name: '부활한 콜로서스',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'human',  
+                evasion: '1,450',
+		        critResist: '150%',
+				hp: '20,642,913',
+				petRequirement: '',
+                drops: '단검, 이빨, 낫, 투구, 신발, 반지'  
+            },
+			{
+                name: '살아남은 룬 머미',  
+                image: 'https://docs.google.com/drawings/u/0/d/1hHm7eTb2f48dqpVx62rQCrxPIiokP_mMvbVcCYG6zzsgwCIpo5s0e7ZHsgamjcpLz_BV0mL8LdwjsIM2bHKq88v1d5n4wKMapx46AkT5N8fo3mPy/image?parent=e/2PACX-1vQuyAX4HybGpaVNZ9GEyHwdrD5egCv-wWbD0GXGUZDstJ-IR7Llz_q5whZ-0UMHVk32DH8-1eczY0w2&w=161&h=163&rev=3&drawingRevisionAccessToken=4hwr8QPXR7UNsA&ac=1', 
+                icon: 'undead',  
+                evasion: '1,450',
+		        critResist: '130%',
+				hp: '16,856,275',
+				petRequirement: '',
+                drops: '양손검, 지팡이, 책, 팔찌, 신발, 어깨 문신'  
+            },
         ]
     }
 };
@@ -1696,19 +1949,27 @@ function renderAll(keyword = '', selectedMap = '') {
                 const entry = document.createElement('div');
                 entry.className = 'monster-entry';
                 entry.innerHTML = `
-                    <div class="monster-left">
-                        <div class="image-wrapper">
-                            <img src="${monster.image}" alt="${monster.name}" class="monster-image">
-                            <div class="monster-name-overlay">${monster.name}</div>
-                        </div>
-                        ${iconHtml}
-                        ${monster.petRequirement ? `<div class="required ${petClass}">※ ${monster.petRequirement}</div>` : ''}
-                        ${evasionHtml}
-                    </div>
-                    <div class="monster-right">
-                        <div class="drop-items">${mainText}${extraHtml}</div>
-                    </div>
-                `;
+  <div class="monster-left">
+    <div class="image-wrapper">
+      <img src="${monster.image}" alt="${monster.name}" class="monster-image">
+      <div class="monster-name-overlay">${monster.name}</div>
+    </div>
+    ${iconHtml}
+    ${monster.petRequirement ? `<div class="required ${petClass}">※ ${monster.petRequirement}</div>` : ''}
+  </div>
+
+  <div class="monster-mid">
+    <div class="monster-stats">
+      <div class="stat-row"><span class="stat-label">필요운 :</span> <span class="stat-value" style="color:${isMax?'red':'black'}">${monster.evasion}</span></div>
+      <div class="stat-row"><span class="stat-label">치명타 저항 :</span> <span class="stat-value">${monster.critResist ?? '-'}</span></div>
+      <div class="stat-row"><span class="stat-label">체력 :</span> <span class="stat-value">${monster.hp ?? '-'}</span></div>
+    </div>
+  </div>
+
+  <div class="monster-right">
+    <div class="drop-items">${mainText}${extraHtml}</div>
+  </div>
+`;
                 dropTable.appendChild(entry);
             });
         });

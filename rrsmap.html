@@ -1869,8 +1869,8 @@ beastforest: {
                 evasion: '1,551',
 		        critResist: '100%',
 				hp: '20,289,643',
-				petRequirement: '빛펫 필요',
-                drops: '활, 투구, 벨트, 팔찌,화살, 방패, '  
+				petRequirement: ['빛펫 필요', '바람펫 필요'],
+                drops: '활, 투구, 벨트, 팔찌,화살, 방패 '  
             },
 			{
                 name: '아스트랄 프로그',  
@@ -2120,7 +2120,7 @@ beastforest: {
     }
 };
 
-const data = formatDeep(RAW_DATA); // <-- 전체 숫자 포맷 적용
+const data = formatDeep(RAW_DATA);
 
 let currentKeyword = '';
 
@@ -2131,7 +2131,6 @@ function escapeRegExp(string) {
   return String(string).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
 
-// drops 첫 줄에서 아이템만 파싱(예: "메이스, 지팡이, 책" / 개행 주석은 제외)
 function parseDropItems(monster) {
   const drops = (monster?.drops ?? '');
   const firstLine = drops.split('\n')[0];
@@ -2141,23 +2140,19 @@ function parseDropItems(monster) {
     .filter(Boolean);
 }
 
-// ✅ 정확 일치: "활"은 drops 배열에 "활"이 있을 때만 true
 function dropHasExactItem(monster, keyword) {
   const q = (keyword ?? '').trim();
   if (!q) return true;
 
   const items = parseDropItems(monster);
 
-  // 1) 일반 정확 일치
   if (items.includes(q)) return true;
 
-  // 2) '모든 무기' 처리: 무기 검색어라면 매칭
   if (items.includes('모든 무기') && WEAPON_ITEMS.has(q)) return true;
 
   return false;
 }
 
-// 필요 운 최대값 계산 (표시용)
 function getMaxEvasion(monsters) {
   return Math.max(
     0,
@@ -2166,7 +2161,7 @@ function getMaxEvasion(monsters) {
 }
 
 /* =========================
-   4) 구분 라벨 규칙(원본 유지)
+   4) 구분 라벨 규칙
 ========================= */
 const dividerRules = {
   square: [
@@ -2181,7 +2176,7 @@ const dividerRules = {
     { name: '둠 캐스터', label: '내각' },
     { name: '엘프 순찰자', label: '내각' }
   ],
-    seatemple4: [
+  seatemple4: [
     { name: '트리톤', label: 'Lv.1350' },
     { name: '어벤져', label: 'Lv.1350' },
     { name: '트리톤', label: 'Lv.1400' },
@@ -2293,7 +2288,6 @@ function renderAll(keyword = '', selectedMap = '') {
 
     const maxEvasion = getMaxEvasion(matchedMonsters);
 
-    // ✅ 그룹화 + 순서 보존 (원본 유지)
     const labelGroups = {};
     const labelOrder = [];
     const defaultGroup = '__default__';
@@ -2337,9 +2331,13 @@ function renderAll(keyword = '', selectedMap = '') {
       }
 
       groupMonsters.forEach(monster => {
-        const petClass = petClassMap[monster.petRequirement] || '';
         const iconUrl = iconMap[monster.icon] || '';
         const iconHtml = iconUrl ? `<img src="${iconUrl}" alt="icon" class="monster-icon">` : '';
+
+        // ✅ 문자열/배열 모두 지원하도록 정규화
+        const petReqs = Array.isArray(monster.petRequirement)
+          ? monster.petRequirement
+          : (monster.petRequirement ? [monster.petRequirement] : []);
 
         const evasionValue = parseInt(String(monster.evasion ?? '').replace(/,/g, ''), 10) || 0;
         const isMax = evasionValue === maxEvasion;
@@ -2355,7 +2353,10 @@ function renderAll(keyword = '', selectedMap = '') {
               <div class="monster-name-overlay">${monster.name}</div>
             </div>
             ${iconHtml}
-            ${monster.petRequirement ? `<div class="required ${petClass}">※ ${monster.petRequirement}</div>` : ''}
+            ${petReqs.length
+              ? petReqs.map(pet => `<div class="required ${petClassMap[pet] || ''}">※ ${pet}</div>`).join('')
+              : ''
+            }
           </div>
 
           <div class="monster-mid">
@@ -2406,13 +2407,15 @@ window.onload = () => {
   });
 };
 
+/* =========================
+   8) 드랍 텍스트 하이라이트
+========================= */
 function highlightDropsText(monster, keyword, regex) {
   const drops = String(monster.drops ?? '');
   const [mainLine, ...extraParts] = drops.split('\n');
 
   let highlightedMain = mainLine;
 
-  // 1) 일반 검색어 하이라이트
   if (regex) {
     highlightedMain = highlightedMain.replace(
       regex,
@@ -2420,7 +2423,6 @@ function highlightDropsText(monster, keyword, regex) {
     );
   }
 
-  // 2) 🔥 '모든 무기' + 무기 검색어면 '모든 무기'도 빨강
   const q = (keyword ?? '').trim();
   if (
     q &&

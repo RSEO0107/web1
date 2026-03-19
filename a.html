@@ -4,122 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>간단 제보</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      margin: 0;
-      padding: 20px;
-      background: #f7f7f7;
-    }
-    .box {
-      max-width: 480px;
-      margin: 0 auto;
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    }
-    h2 {
-      margin-top: 0;
-      text-align: center;
-    }
-    input, textarea, button {
-      width: 100%;
-      box-sizing: border-box;
-      margin-top: 10px;
-      padding: 12px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-    }
-    textarea {
-      min-height: 120px;
-      resize: none;
-    }
-    button {
-      background: #2d6cdf;
-      color: white;
-      border: none;
-      font-weight: bold;
-    }
-    #status {
-      margin-top: 12px;
-      text-align: center;
-      font-size: 14px;
-    }
-    img {
-      width: 100%;
-      margin-top: 10px;
-      border-radius: 8px;
-      display: none;
-    }
-  </style>
 </head>
 <body>
-  <div class="box">
-    <h2>간단 제보</h2>
-    <input type="text" id="name" placeholder="이름" />
-    <textarea id="content" placeholder="내용 입력"></textarea>
-    <input type="file" id="photo" accept="image/*" capture="environment" />
-    <img id="preview" />
-    <button onclick="submitForm()">제출</button>
-    <div id="status"></div>
-  </div>
+  <input type="text" id="name" placeholder="이름"><br><br>
+  <textarea id="content" placeholder="내용"></textarea><br><br>
+  <button onclick="submitForm()">제출</button>
+  <div id="status"></div>
 
   <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbw02ok6tSZFkOFCNt4b0e1W3UV7VReCMNXz6hTXUUWGkjueKKAnSFUoGKupiCVgaQrpQg/exec";
-    let photoBase64 = "";
-
-    document.getElementById("photo").addEventListener("change", function(e) {
-      const file = e.target.files[0];
-      if (!file) return;
-
-      const reader = new FileReader();
-      reader.onload = function() {
-        photoBase64 = reader.result;
-        const preview = document.getElementById("preview");
-        preview.src = photoBase64;
-        preview.style.display = "block";
-      };
-      reader.readAsDataURL(file);
-    });
+    const SCRIPT_URL = "여기에_배포된_exec_URL";
 
     async function submitForm() {
+      const status = document.getElementById("status");
       const name = document.getElementById("name").value.trim();
       const content = document.getElementById("content").value.trim();
-      const status = document.getElementById("status");
-
-      if (!content) {
-        status.textContent = "내용은 입력해야 합니다.";
-        return;
-      }
-
-      status.textContent = "전송 중...";
 
       try {
         const res = await fetch(SCRIPT_URL, {
           method: "POST",
-          body: JSON.stringify({
-            name: name,
-            content: content,
-            photoBase64: photoBase64
-          })
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8"
+          },
+          body: JSON.stringify({ name, content })
         });
 
-        const data = await res.json();
-
-        if (data.result === "success") {
-          status.textContent = "제출 완료!";
-          document.getElementById("name").value = "";
-          document.getElementById("content").value = "";
-          document.getElementById("photo").value = "";
-          document.getElementById("preview").style.display = "none";
-          photoBase64 = "";
-        } else {
-          status.textContent = "오류: " + data.message;
-        }
-      } catch (err) {
-        status.textContent = "전송 실패";
+        const text = await res.text();
+        status.textContent = text;
+      } catch (e) {
+        status.textContent = "전송 실패: " + e;
       }
     }
   </script>

@@ -1,39 +1,203 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>간단 제보</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 16px;
+      font-family: sans-serif;
+      background: #f4f6f8;
+    }
+
+    .wrap {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: 22px;
+      text-align: center;
+    }
+
+    .desc {
+      margin: 0 0 14px;
+      font-size: 14px;
+      color: #666;
+      text-align: center;
+    }
+
+    input,
+    textarea,
+    button {
+      width: 100%;
+      font-size: 16px;
+      border-radius: 10px;
+    }
+
+    input,
+    textarea {
+      margin-top: 10px;
+      padding: 12px;
+      border: 1px solid #d0d7de;
+      background: #fff;
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: none;
+    }
+
+    input[type="file"] {
+      padding: 10px;
+      background: #fafafa;
+    }
+
+    button {
+      margin-top: 14px;
+      padding: 14px;
+      border: none;
+      background: #2d6cdf;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:disabled {
+      background: #9fb7ea;
+      cursor: not-allowed;
+    }
+
+    #preview {
+      display: none;
+      width: 100%;
+      margin-top: 12px;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+    }
+
+    #status {
+      margin-top: 12px;
+      text-align: center;
+      font-size: 14px;
+      white-space: pre-wrap;
+      color: #333;
+    }
+
+    .hint {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #777;
+      text-align: center;
+    }
+  </style>
 </head>
 <body>
-  <input type="text" id="name" placeholder="이름"><br><br>
-  <textarea id="content" placeholder="내용"></textarea><br><br>
-  <button onclick="submitForm()">제출</button>
-  <div id="status"></div>
+  <div class="wrap">
+    <div class="card">
+      <h1>간단 제보</h1>
+      <p class="desc">내용만 입력해도 바로 제출 가능</p>
+
+      <input type="text" id="name" placeholder="이름(선택)">
+      <textarea id="content" placeholder="내용을 입력하세요"></textarea>
+      <input type="file" id="photo" accept="image/*" capture="environment">
+      <img id="preview" alt="사진 미리보기">
+
+      <button id="submitBtn">제출</button>
+
+      <div id="status"></div>
+      <div class="hint">사진은 선택사항</div>
+    </div>
+  </div>
 
   <script>
-    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbwtCs_JlBiiwe91UorESMqxT99zRxSGXbhPW7MI_4SGfQkBlQ1XmgkftJu0vDzVG98CIQ/exec";
+    const SCRIPT_URL = "YOUR_SCRIPT_URL";
 
-    async function submitForm() {
-      const status = document.getElementById("status");
-      const name = document.getElementById("name").value.trim();
-      const content = document.getElementById("content").value.trim();
+    const nameEl = document.getElementById("name");
+    const contentEl = document.getElementById("content");
+    const photoEl = document.getElementById("photo");
+    const previewEl = document.getElementById("preview");
+    const submitBtn = document.getElementById("submitBtn");
+    const statusEl = document.getElementById("status");
+
+    let photoBase64 = "";
+
+    photoEl.addEventListener("change", function (e) {
+      const file = e.target.files[0];
+
+      if (!file) {
+        photoBase64 = "";
+        previewEl.src = "";
+        previewEl.style.display = "none";
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function () {
+        photoBase64 = reader.result;
+        previewEl.src = photoBase64;
+        previewEl.style.display = "block";
+      };
+      reader.readAsDataURL(file);
+    });
+
+    submitBtn.addEventListener("click", async function () {
+      const name = nameEl.value.trim();
+      const content = contentEl.value.trim();
+
+      if (!content) {
+        statusEl.textContent = "내용을 입력해줘.";
+        contentEl.focus();
+        return;
+      }
+
+      submitBtn.disabled = true;
+      statusEl.textContent = "전송 중...";
 
       try {
+        const body = new URLSearchParams();
+        body.append("name", name);
+        body.append("content", content);
+        body.append("photo", photoBase64);
+
         const res = await fetch(SCRIPT_URL, {
           method: "POST",
-          headers: {
-            "Content-Type": "text/plain;charset=utf-8"
-          },
-          body: JSON.stringify({ name, content })
+          body: body
         });
 
         const text = await res.text();
-        status.textContent = text;
-      } catch (e) {
-        status.textContent = "전송 실패: " + e;
+
+        if (text === "OK") {
+          statusEl.textContent = "제출 완료";
+          nameEl.value = "";
+          contentEl.value = "";
+          photoEl.value = "";
+          photoBase64 = "";
+          previewEl.src = "";
+          previewEl.style.display = "none";
+        } else {
+          statusEl.textContent = "오류: " + text;
+        }
+      } catch (err) {
+        statusEl.textContent = "전송 실패: " + err;
+      } finally {
+        submitBtn.disabled = false;
       }
-    }
+    });
   </script>
 </body>
 </html>

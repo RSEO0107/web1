@@ -42,6 +42,9 @@
         .monster-stats .stat-row:last-child{margin-bottom:0;}
         .monster-stats .stat-label{color:#555;font-weight:700;}
         .monster-stats .stat-value{font-weight:800;}
+		.stat-crush { color: #5aa7ff; }
+		.stat-crit { color: #ff7f7f; }
+		.stat-crit-resist { color: red; }
     </style>
 </head>
 <body>
@@ -1831,6 +1834,8 @@ beastforest: {
                 icon: 'human',  
                 evasion: '16,517',
 		        critResist: '100%',
+				crush: '5%',
+				crit: '5%',
 				hp: '19,477,255',
 				petRequirement: '물펫 필요',
                 drops: '날개, 책, 관, 전용 갑옷, 방패, 반지'  
@@ -1841,6 +1846,8 @@ beastforest: {
                 icon: 'human',  
                 evasion: '18,381',
 		        critResist: '100%',
+				crush: '5%',
+				crit: '10%',
 				hp: '20,293,600',
 				petRequirement: '바람펫 필요',
                 drops: '목걸이, 벨트, 슬링 탄환, 어깨 문신, 팔 문신, 반지'  
@@ -1858,6 +1865,8 @@ beastforest: {
                 icon: 'animal',  
                 evasion: '1,588',
 		        critResist: '100%',
+				crush: '0%',
+				crit: '20%',
 				hp: '20,565,600',
 				petRequirement: '빛펫 필요',
                 drops: '슬링, 채찍, 벨트, 팔찌, 슬링 탄환, 반지'  
@@ -1868,6 +1877,8 @@ beastforest: {
                 icon: 'divine',  
                 evasion: '1,551',
 		        critResist: '100%',
+				crush: '3%',
+				crit: '8%',
 				hp: '20,289,643',
 				petRequirement: ['빛펫 필요', '바람펫 필요'],
                 drops: '활, 투구, 벨트, 팔찌,화살, 방패 '  
@@ -1878,6 +1889,8 @@ beastforest: {
                 icon: 'animal',  
                 evasion: '1,551',
 		        critResist: '100%',
+				crush: '1%',
+				crit: '20%',
 				hp: '20,452,152',
 				petRequirement: '',
                 drops: '창, 지팡이, 귀걸이, 장갑, 신발, 반지'  
@@ -1888,6 +1901,8 @@ beastforest: {
                 icon: 'divine',  
                 evasion: '1,551',
 		        critResist: '100%',
+				crush: '10%',
+				crit: '0%',
 				hp: '20,760,784',
 				petRequirement: '',
                 drops: '한손검, 메이스, 이빨, 낫, 책, 공용 갑옷'  
@@ -1898,6 +1913,8 @@ beastforest: {
                 icon: 'divine',  
                 evasion: '1,735',
 		        critResist: '100%',
+				crush: '10%',
+				crit: '10%',
 				hp: '20,107,149',
 				petRequirement: '',
                 drops: '귀걸이, 망토, 벨트, 장갑, 공용 갑옷, 반지'  
@@ -1908,6 +1925,8 @@ beastforest: {
                 icon: 'divine',  
                 evasion: '1,551',
 		        critResist: '100%',
+				crush: '0%',
+				crit: '3%',
 				hp: '20,396,640',
 				petRequirement: '빛펫 필요',
                 drops: '날개, 단도, 마술봉, 목걸이, 망토, 투구'  
@@ -1918,6 +1937,8 @@ beastforest: {
                 icon: 'divine',  
                 evasion: '1,551',
 		        critResist: '200%',
+				crush: '20%',
+				crit: '20%',
 				hp: '20,235,600',
 				petRequirement: '',
                 drops: '양손검, 관, 장갑, 발톱, 팔찌, 전용 갑옷'  
@@ -1935,6 +1956,8 @@ beastforest: {
                 icon: 'human',  
                 evasion: '23984',
 		        critResist: '120%',
+				crush: '10%',
+				crit: '10%',
 				hp: '20,044,336',
 				petRequirement: '',
                 drops: '한손검, 창, 손톱무기, 투구, 방패, 어깨 문신'  
@@ -1945,6 +1968,8 @@ beastforest: {
                 icon: 'human',  
                 evasion: '23984',
 		        critResist: '120%',
+				crush: '5%',
+				crit: '5%',
 				hp: '20,044,336',
 				petRequirement: '',
                 drops: '양손검, 피리, 손톱무기, 발톱, 신발, 팔 문신'  
@@ -1955,6 +1980,8 @@ beastforest: {
                 icon: 'human',  
                 evasion: '23984',
 		        critResist: '120%',
+				crush: '10%',
+				crit: '10%',
 				hp: '20,044,336',
 				petRequirement: '',
                 drops: '날개, 낫, 귀걸이, 벨트, 팔찌, 공용 갑옷'  
@@ -1965,6 +1992,8 @@ beastforest: {
                 icon: 'human',  
                 evasion: '1,430',
 		        critResist: '120%',
+				crush: '5%',
+				crit: '5%',
 				hp: '20,044,336',
 				petRequirement: '',
                 drops: '메이스, 단도, 마술봉, 낫, 망토, 화살'  
@@ -1975,6 +2004,8 @@ beastforest: {
                 icon: 'human',  
                 evasion: '23984',
 		        critResist: '120%',
+				crush: '7%',
+				crit: '7%',
 				hp: '20,044,336',
 				petRequirement: '불펫 필요',
                 drops: '지팡이, 슬링, 마술봉, 책, 목걸이, 관'  
@@ -1985,6 +2016,8 @@ beastforest: {
                 icon: 'devil',  
                 evasion: '23984',
 		        critResist: '120%',
+				crush: '10%',
+				crit: '8%',
 				hp: '20,044,336',
 				petRequirement: '빛펫 필요',
                 drops: '활, 이빨, 피리, 장갑, 전용 갑옷, 반지'  
@@ -1995,6 +2028,8 @@ beastforest: {
                 icon: 'undead',  
                 evasion: '23984',
 		        critResist: '120%',
+				crush: '10%',
+				crit: '10%',
 				hp: '20,044,336',
 				petRequirement: '불펫 필요',
                 drops: '지팡이, 단도, 책, 관, 장갑, 반지'  
@@ -2005,6 +2040,8 @@ beastforest: {
                 icon: 'undead',  
                 evasion: '23984',
 		        critResist: '120%',
+				crush: '6%',
+				crit: '5%',
 				hp: '20,044,336',
 				petRequirement: '',
                 drops: '메이스, 마술봉, 발톱, 투구, 공용 갑옷, 화살'  
@@ -2022,6 +2059,8 @@ beastforest: {
                 icon: 'undead',  
                 evasion: '1,539',
 		        critResist: '130%',
+				crush: '10%',
+				crit: '10%',
 				hp: '20,344,955',
 				petRequirement: '',
                 drops: '한손검, 활, 책, 팔찌, 공용 갑옷, 방패'  
@@ -2032,6 +2071,8 @@ beastforest: {
                 icon: 'human',  
                 evasion: '1,539',
 		        critResist: '130%',
+				crush: '5%',
+				crit: '25%',
 				hp: '20,251,152',
 				petRequirement: '',
                 drops: '한손검, 활, 손톱무기, 장갑, 팔찌, 팔 문신'  
@@ -2042,6 +2083,8 @@ beastforest: {
                 icon: 'animal',  
                 evasion: '24,970',
 		        critResist: '130%',
+				crush: '5%',
+				crit: '10%',
 				hp: '20,145,602',
 				petRequirement: '',
                 drops: '메이스, 이빨, 피리, 전용 갑옷, 신발, 반지'  
@@ -2052,6 +2095,8 @@ beastforest: {
                 icon: 'undead',  
                 evasion: '1,449',
 		        critResist: '130%',
+				crush: '1%',
+				crit: '10%',
 				hp: '20,344,955',
 				petRequirement: '',
                 drops: '창, 날개, 피리, 귀걸이, 망토, 브로치'  
@@ -2062,6 +2107,8 @@ beastforest: {
                 icon: 'divine',  
                 evasion: '24,970',
 		        critResist: '130%',
+				crush: '1%',
+				crit: '15%',
 				hp: '20,643,985',
 				petRequirement: '불펫 필요',
                 drops: '활, 슬링, 마술봉, 발톱, 슬링 탄환, 반지'  
@@ -2072,6 +2119,8 @@ beastforest: {
                 icon: 'divine',  
                 evasion: '3,715',
 		        critResist: '130%',
+				crush: '10%',
+				crit: '10%',
 				hp: '20,643,985',
 				petRequirement: '',
                 drops: '메이스, 지팡이, 책, 귀걸이, 벨트, 반지'  
@@ -2082,6 +2131,8 @@ beastforest: {
                 icon: 'devil',  
                 evasion: '24,970',
 		        critResist: '130%',
+				crush: '5%',
+				crit: '10%',
 				hp: '20,145,602',
 				petRequirement: '',
                 drops: '이빨, 슬링, 발톱, 슬링 탄환, 어깨 문신'  
@@ -2092,6 +2143,8 @@ beastforest: {
                 icon: 'human',  
                 evasion: '24,970',
 		        critResist: '130%',
+				crush: '0%',
+				crit: '10%',
 				hp: '20,145,602',
 				petRequirement: '불펫 필요',
                 drops: '피리, 마술봉, 관, 벨트, 화살, 팔 문신'  
@@ -2102,6 +2155,8 @@ beastforest: {
                 icon: 'human',  
                 evasion: '24,970',
 		        critResist: '150%',
+				crush: '10%',
+				crit: '15%',
 				hp: '20,642,913',
 				petRequirement: '',
                 drops: '단도, 이빨, 낫, 투구, 신발, 반지'  
@@ -2112,6 +2167,8 @@ beastforest: {
                 icon: 'undead',  
                 evasion: '1,449',
 		        critResist: '130%',
+				crush: '0%',
+				crit: '10%',
 				hp: '16,856,275',
 				petRequirement: '',
                 drops: '양손검, 지팡이, 책, 팔찌, 신발, 어깨 문신'  
@@ -2129,6 +2186,8 @@ beastforest: {
                 icon: 'human',  
                 evasion: '25,486',
 		        critResist: '150%',
+				crush: '30%',
+				crit: '50%',
 				hp: '20723616',
 				petRequirement: '',
                 drops: '한손검, 활, 손톱무기, 장갑, 팔찌, 팔 문신, 반지'  
@@ -2139,6 +2198,8 @@ beastforest: {
                 icon: 'human',  
                 evasion: '25,323',
 		        critResist: '140%',
+				crush: '10%',
+				crit: '15%',
 				hp: '20236752',
 				petRequirement: '',
                 drops: '한손검, 활, 손톱무기, 장갑, 팔찌, 팔 문신, 화살'  
@@ -2146,11 +2207,12 @@ beastforest: {
 			{
                 name: '죄수',  
                 image: 'https://github.com/RSEO0107/web1/blob/main/image/huntersrestroomz/03.png?raw=true', 
-                icon: 'animal',  
+                icon: 'human',  
                 evasion: '1,467',
 		        critResist: '120%',
+				crush: '5%',
+				crit: '5%',
 				hp: '20705014',
-				petRequirement: '어둠펫 필요',
                 drops: '메이스, 단도, 마술봉, 낫, 망토, 화살'  
             },
         ]
@@ -2166,6 +2228,8 @@ beastforest: {
                 icon: 'devil',  
                 evasion: '26,658',
 		        critResist: '150%',
+				crush: '15%',
+				crit: '50%',
 				hp: '20716519',
 				petRequirement: '',
                 drops: '피리, 마술봉, 귀걸이, 공용 갑옷, 방패, 반지'  
@@ -2176,6 +2240,8 @@ beastforest: {
                 icon: 'devil',  
                 evasion: '25,638',
 		        critResist: '150%',
+				crush: '13%',
+				crit: '22%',
 				hp: '20629460',
 				petRequirement: '',
                 drops: '양손검, 활, 목걸이, 팔찌, 팔 문신, 반지'  
@@ -2186,6 +2252,8 @@ beastforest: {
                 icon: 'devil',  
                 evasion: '26,658',
 		        critResist: '150%',
+				crush: '0%',
+				crit: '30%',
 				hp: '20269061',
 				petRequirement: '불펫 필요',
                 drops: '양손검, 지팡이, 이빨, 낫, 목걸이, 반지'  
@@ -2196,6 +2264,8 @@ beastforest: {
                 icon: 'devil',  
                 evasion: '27,662',
 		        critResist: '150%',
+				crush: '15%',
+				crit: '35%',
 				hp: '20556874',
 				petRequirement: '',
                 drops: '양손검, 채찍, 낫, 목걸이, 공용 갑옷, 반지'  
@@ -2451,8 +2521,19 @@ function renderAll(keyword = '', selectedMap = '') {
               </div>
               <div class="stat-row">
                 <span class="stat-label">치명타 저항 :</span>
-                <span class="stat-value">${monster.critResist ?? '-'}</span>
+                <span class="stat-value stat-crit-resist">${monster.critResist ?? '-'}</span>
               </div>
+			  ${monster.crush ? `
+				<div class="stat-row">
+				  <span class="stat-label">크러시 :</span>
+				  <span class="stat-value stat-crush">${monster.crush}</span>
+				</div>` : ''}
+
+				${monster.crit ? `
+				<div class="stat-row">
+				  <span class="stat-label">치명타 :</span>
+				  <span class="stat-value stat-crit">${monster.crit}</span>
+				</div>` : ''}
               <div class="stat-row">
                 <span class="stat-label">체력 :</span>
                 <span class="stat-value">${monster.hp ?? '-'}</span>
